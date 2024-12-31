@@ -1,19 +1,32 @@
-let greeting: string = 'Hello, Typescript'
-greeting = greeting.toUpperCase()
-console.log(greeting)
+interface Book {
+  readonly isbn: number
+  title: string
+  author: string
+  genre?: string
+  printAuthor(): void
+  printTitle(message: String): string
+  printSomething: (somevalue: number) => number
+}
 
-let age: number = 25
-age = age + 5
-console.log(age)
+const deepWork: Book = {
+  isbn: 123,
+  title: 'deep work',
+  author: 'cal newport',
+  genre: 'self-help',
+  //   price: 100
+  printAuthor() {
+    console.log(this.author)
+  },
+  printTitle(message) {
+    return `${this.title} ${message}`
+  },
 
-let isAdult: boolean = age >= 10
+  printSomething: function (somevalue) {
+    return `This is the price on the book ${somevalue}`
+  },
+}
 
-isAdult = !isAdult
+// deepWork.isbn = 'somevalue'
 
-console.log(isAdult)
-
-// greeting = 10
-// age = 'thirty'
-// isAdult = 'yes'
-
-console.log(greeting, age, isAdult)
+const bookPrice = deepWork.printSomething(40)
+console.log(bookPrice)
